@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Productos.Modelos
 {
-    internal class Producto
+    public class Producto
     {
         public string Codigo { get; set; }
         public string Nombre { get; set; }
         public double Precio { get; set; }
         public Boolean IVA { get; set; }
 
+        public String Código { get; set; }
     }
 }

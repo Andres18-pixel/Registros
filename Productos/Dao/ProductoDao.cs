@@ -1,19 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System;
+using System.Windows.Forms;
+using Productos.Modelos;
 
 namespace Productos.Dao
 {
     public class ProductoDao
     {
-        private ProductoDao[] carrito = new ProductoDao[10];
+        public static int TAM = 5;
+        const int TAMAÑO = 10;
+        private Producto[] carrito = new Producto[TAM];
         private int pos = 0;
 
-        public void Agregar(ProductoDao prod)
+        public void Agregar(Producto prod)
+        {   
+            try
+            {
+                carrito[pos++] = prod;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                 MessageBox.Show("No se pueden agregar más productos al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public Producto[] VerCarrito()
         {
-            carrito[pos++] = prod;
+            return carrito;
         }
 
 
