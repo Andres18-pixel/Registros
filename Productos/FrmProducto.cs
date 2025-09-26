@@ -5,10 +5,10 @@ using Productos.Modelos;
 
 namespace Productos
 {
-    public partial class Form1 : Form
+    public partial class FrmProducto : Form
     {
         ProductoDao dao = new ProductoDao();
-        public Form1()
+        public FrmProducto()
         {
             InitializeComponent();
             LlenarGrid();

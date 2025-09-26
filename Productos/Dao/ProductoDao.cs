@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Net.Http.Headers;
 using System.Windows.Forms;
 using Productos.Modelos;
 
@@ -25,11 +26,8 @@ namespace Productos.Dao
         }
         public Producto[] VerCarrito()
         {
+            
             return carrito;
         }
-
-
-
-
     }
 }
