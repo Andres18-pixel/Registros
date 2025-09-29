@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,20 @@ namespace Productos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmPrincipal());
+            using (Login login = new Login())
+            {
+                if (login.ShowDialog() == DialogResult.OK)
+                {
+                    Application.Run(new FrmPrincipal());
+                }
+
+                else
+                {
+                    MessageBox.Show("Credenciales invalidas");
+                }
+
+            }
+
         }
     }
 }
