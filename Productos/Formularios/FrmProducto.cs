@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using Productos.Dao;
+﻿using Productos.Dao;
 using Productos.Modelos;
+using System;
+using System.Windows.Forms;
 
 namespace Productos
 {
@@ -20,7 +20,7 @@ namespace Productos
             this.dgvRegistros.Refresh();
         }
 
-        private void btnRegistrar_Click(object sender, EventArgs e)
+        private void btnRegistrar_Click(object sender, System.EventArgs e)
         {
             Producto prod = new Producto();
             try
@@ -29,12 +29,13 @@ namespace Productos
                 prod.Codigo = tbCodigo.Text.ToUpper();
                 prod.Precio = double.Parse(tbPrecio.Text);
                 prod.IVA = chkIVA.Checked;
-            }catch (FormatException)
-            {
-                MessageBox.Show("No se puede agregar texto en el precio", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                dao.Agregar(prod);
             }
-            dao.Agregar(prod);
+            catch(FormatException)
+            {
+                MessageBox.Show("No se puede agregar texto en el precio ","Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
             LlenarGrid();
         }
     }
